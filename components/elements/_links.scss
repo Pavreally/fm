@@ -1,0 +1,118 @@
+// Links Constructor (div a {)
+@each $link-class-name, $link-color, $link-hover-color, $link-hover-animation, $link-margin, $link-template in $links-for-div {
+  @if ($link-class-name != null) {
+    .#{$link-class-name} {
+      a {
+        @if ($link-template != null) {
+          @extend %#{$link-template};
+        } @else if ($link-hover-animation != none) or ($link-hover-animation != n) or ($link-hover-animation != '') {
+          display: inline-block;
+          position: relative;
+          text-decoration: $link-text-decoration;
+
+          &::after {
+            @if ($link-hover-animation == left) {
+              left: 0;
+            } @else if ($link-hover-animation == right) {
+              right: 0;
+            } @else if ($link-hover-animation == center) {
+              left: 50%;
+              transform: translateX(-50%);
+            }
+
+            background-color: $link-hover-color;
+            content: '';
+            display: block;
+            height: $link-height-underline;
+            position: absolute;
+            transition: width $link-transition;
+            width: 0;
+          }
+
+          &:hover,
+          &:focus {
+            color: $link-hover-color;
+
+            &::after {
+              width: 100%;
+            }
+          }
+        } @else {
+          border-bottom: $link-height-underline solid $link-color;
+
+          &:hover {
+            color: $link-hover-color;
+          }
+        }
+
+        @if ($link-hover-animation == none) or ($link-hover-animation == n) or ($link-hover-animation == '') {
+          border-bottom: $link-height-underline solid $link-color;
+        }
+
+        color: $link-color;
+        margin: $link-margin;
+        text-decoration: $link-text-decoration;
+        transition: $link-transition;
+      }
+    }
+  }
+}
+
+// Links Constructor (a {)
+@each $link-class-name, $link-color, $link-hover-color, $link-hover-animation, $link-margin, $link-template in $links-for-a {
+  @if ($link-class-name != null) {
+    .#{$link-class-name} {
+
+      @if ($link-template != null) {
+        @extend %#{$link-template};
+      } @else if ($link-hover-animation != none) or ($link-hover-animation != n) or ($link-hover-animation != '') {
+        display: inline-block;
+        position: relative;
+        text-decoration: $link-text-decoration;
+
+        &::after {
+          @if ($link-hover-animation == left) {
+            left: 0;
+          } @else if ($link-hover-animation == right) {
+            right: 0;
+          } @else if ($link-hover-animation == center) {
+            left: 50%;
+            transform: translateX(-50%);
+          }
+
+          background-color: $link-hover-color;
+          content: '';
+          display: block;
+          height: $link-height-underline;
+          position: absolute;
+          transition: width $link-transition;
+          width: 0;
+        }
+
+        &:hover,
+        &:focus {
+          color: $link-hover-color;
+
+          &::after {
+            width: 100%;
+          }
+        }
+      } @else {
+        border-bottom: $link-height-underline solid $link-color;
+
+        &:hover {
+          color: $link-hover-color;
+        }
+      }
+
+      @if ($link-hover-animation == none) or ($link-hover-animation == n) or ($link-hover-animation == '') {
+        border-bottom: $link-height-underline solid $link-color;
+      }
+
+      color: $link-color;
+      margin: $link-margin;
+      text-decoration: $link-text-decoration;
+      transition: $link-transition;
+    }
+  }
+}

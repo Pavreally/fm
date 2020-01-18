@@ -1,0 +1,33 @@
+// 1. Connected Fonts:
+$default-fonts-path: '../your_path/fonts';
+$fonts-format: eot, woff2, woff, ttf, otf, svg;
+
+$fonts:
+// * ('font_name', 'file_name', '/catalog', style, weight, stretch, unicode_range),
+// * ('font_name', remote, 'link_http'),
+// (Arial, '', '/Arial', normal),
+();
+
+// 2. Fast Links:
+$link-height-underline: 1px;
+$link-transition: .1s ease-in-out;
+$link-text-decoration: none;
+
+$links-for-div:
+// * (class_name, color, hover_color, UDH, margin, name_template_class),
+// * (UDH) Underline-Direction-Hover: left, right, center, none.
+// (example-class, #000, #000fff, center, 0),
+();
+
+$links-for-a:
+// (example-class, #000, #000fff, center, 0),
+();
+
+// 3. Div Blocks:
+$div-blocks:
+// * (class_name, z_index, width, height, position, margin, padding, name_template_class)
+// (example-class, n, 100px, 40px, relative, 0, 5px),
+();
+
+// Connecting FM setting components
+@import './components/constructor';

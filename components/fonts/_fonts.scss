@@ -1,0 +1,62 @@
+// Check default path to fonts
+@function font-path($font-path) {
+  @if ($font-path == null) or ($font-path == '') {
+    $font-path: $default-fonts-path;
+  } @else {
+    $font-path: $default-fonts-path + $font-path;
+  }
+
+  @return $font-path;
+}
+
+// Correct type to fonts format
+@function font-type($font-format) {
+  @if ($font-format == 'ttf') {
+    $font-format: 'truetype';
+  } @else if ($font-format == 'eot') {
+    $font-format: 'embedded-opentype';
+  } @else if ($font-format == 'otf') {
+    $font-format: 'opentype';
+  }
+
+  @return $font-format;
+}
+
+// Fonts Constructor
+@each $font-name, $font-filename, $font-path, $font-style, $font-weight, $font-stretch, $unicode-range in $fonts {
+  @if ($font-name != null) {
+    // Handling the presence of the variable $font-filename
+    @if ($font-filename == null) or ($font-filename == '') {
+      $font-filename: $font-name;
+    } @else if ($font-filename == rem) or ($font-filename == remote) or ($font-filename == r) {
+      $default-fonts-path: $font-path;
+    }
+
+    @font-face {
+      font-family: $font-name;
+      font-stretch: $font-stretch;
+      font-style: $font-style;
+      font-weight: $font-weight;
+
+      // Font output
+      src: local('#{$font-name}');
+      @if ($font-filename != rem) and ($font-filename != remote) and ($font-filename != r) {
+        @each $font-format in $fonts-format {
+          @if ($font-format == 'eot') {
+            src: url('#{font-path($font-path)}/#{$font-filename}.#{$font-format}'),
+            url('#{font-path($font-path)}/#{$font-filename}.#{$font-format}?#iefix') format('#{font-type($font-format)}');
+          } @else if ($font-format == 'svg') {
+            src: url('#{font-path($font-path)}/#{$font-filename}.#{$font-format}##{$font-filename}') format('#{font-type($font-format)}');
+          } @else {
+            src: url('#{font-path($font-path)}/#{$font-filename}.#{$font-format}') format('#{font-type($font-format)}');
+          }
+        }
+      } @else {
+        @import url('#{$default-fonts-path}');
+      }
+      @if ($unicode-range != null) {
+        unicode-range: $unicode-range;
+      }
+    }
+  }
+}
