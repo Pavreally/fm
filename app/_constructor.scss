@@ -1,0 +1,22 @@
+// Mixins and template
+@import './mixins/mixins';
+
+// 1. Connected Fonts
+@import './components/fonts';
+
+// 2. Links
+@import './components/links';
+
+// 3. Blocks
+@import './components/blocks';
+
+// 5. Connected parts
+// Front end
+@import './components/frontend/page/header';
+@import './components/frontend/page/body';
+@import './components/frontend/page/footer';
+// Menu
+@import './components/frontend/menu/menu';
+
+// Animations
+@import './animations/animations';

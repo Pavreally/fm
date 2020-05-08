@@ -34,9 +34,15 @@
 
     @font-face {
       font-family: $font-name;
-      font-stretch: $font-stretch;
-      font-style: $font-style;
-      font-weight: $font-weight;
+      @if ($font-stretch != '') and ($font-stretch != n) {
+        font-stretch: $font-stretch;
+      }
+      @if ($font-style != '') and ($font-style != n) {
+        font-style: $font-style;
+      }
+      @if ($font-weight != '') and ($font-weight != n) {
+        font-weight: $font-weight;
+      }
 
       // Font output
       src: local('#{$font-name}');
@@ -54,7 +60,7 @@
       } @else {
         @import url('#{$default-fonts-path}');
       }
-      @if ($unicode-range != null) {
+      @if ($unicode-range != null) or ($unicode-range != '') {
         unicode-range: $unicode-range;
       }
     }

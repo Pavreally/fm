@@ -1,10 +1,14 @@
-// Links Constructor (div a {)
-@each $link-class-name, $link-color, $link-hover-color, $link-hover-animation, $link-margin, $link-template in $links-for-div {
-  @if ($link-class-name != null) {
+// Links Constructor, Wrap (.class a {})
+@each $link-z-index, $link-class-name, $link-color, $link-hover-color, $link-hover-animation, $link-template in $links-wrap {
+  @if ($link-class-name != null) and ($link-z-index != null) {
     .#{$link-class-name} {
       a {
         @if ($link-template != null) {
-          @extend %#{$link-template};
+          @if ($link-template == t) or ($link-template == null) {
+            @extend %#{$link-class-name};
+          } @else {
+            @extend %#{$link-template};
+          }
         } @else if ($link-hover-animation != none) or ($link-hover-animation != n) or ($link-hover-animation != '') {
           display: inline-block;
           position: relative;
@@ -23,7 +27,7 @@
             background-color: $link-hover-color;
             content: '';
             display: block;
-            height: $link-height-underline;
+            height: $link-underline-height;
             position: absolute;
             transition: width $link-transition;
             width: 0;
@@ -37,34 +41,47 @@
               width: 100%;
             }
           }
+
+          @if ($link-hover-animation != none) or ($link-hover-animation != n) or ($link-hover-animation != '') {
+            border-bottom: $link-underline-height solid $link-color;
+          }
         } @else {
-          border-bottom: $link-height-underline solid $link-color;
+          border-bottom: $link-underline-height solid $link-color;
 
           &:hover {
             color: $link-hover-color;
           }
         }
 
-        @if ($link-hover-animation == none) or ($link-hover-animation == n) or ($link-hover-animation == '') {
-          border-bottom: $link-height-underline solid $link-color;
+        color: $link-color;
+
+        @if ($link-transition != none) or ($link-transition != '') or ($link-transition != n) {
+          transition: $link-transition;
         }
 
-        color: $link-color;
-        margin: $link-margin;
-        text-decoration: $link-text-decoration;
-        transition: $link-transition;
+        @if ($link-z-index != none) and ($link-z-index != n) and ($link-z-index != '') {
+          z-index: $link-z-index;
+        }
+
+        &:hover {
+          color: $link-hover-color;
+        }
       }
     }
   }
 }
 
-// Links Constructor (a {)
-@each $link-class-name, $link-color, $link-hover-color, $link-hover-animation, $link-margin, $link-template in $links-for-a {
-  @if ($link-class-name != null) {
+// Links Constructor, Single (a {})
+@each $link-z-index, $link-class-name, $link-color, $link-hover-color, $link-hover-animation, $link-template in $links {
+  @if ($link-class-name != null) or ($link-z-index != null) {
     .#{$link-class-name} {
 
       @if ($link-template != null) {
-        @extend %#{$link-template};
+        @if ($link-template == t) or ($link-template == null) {
+          @extend %#{$link-class-name};
+        } @else {
+          @extend %#{$link-template};
+        }
       } @else if ($link-hover-animation != none) or ($link-hover-animation != n) or ($link-hover-animation != '') {
         display: inline-block;
         position: relative;
@@ -83,7 +100,7 @@
           background-color: $link-hover-color;
           content: '';
           display: block;
-          height: $link-height-underline;
+          height: $link-underline-height;
           position: absolute;
           transition: width $link-transition;
           width: 0;
@@ -97,22 +114,31 @@
             width: 100%;
           }
         }
+
+        @if ($link-hover-animation != none) or ($link-hover-animation != n) or ($link-hover-animation != '') {
+          border-bottom: $link-underline-height solid $link-color;
+        }
       } @else {
-        border-bottom: $link-height-underline solid $link-color;
+        border-bottom: $link-underline-height solid $link-color;
 
         &:hover {
           color: $link-hover-color;
         }
       }
 
-      @if ($link-hover-animation == none) or ($link-hover-animation == n) or ($link-hover-animation == '') {
-        border-bottom: $link-height-underline solid $link-color;
+      color: $link-color;
+
+      @if ($link-transition != none) or ($link-transition != '') or ($link-transition != n) {
+        transition: $link-transition;
       }
 
-      color: $link-color;
-      margin: $link-margin;
-      text-decoration: $link-text-decoration;
-      transition: $link-transition;
+      @if ($link-z-index != none) and ($link-z-index != n) and ($link-z-index != '') {
+        z-index: $link-z-index;
+      }
+
+      &:hover {
+        color: $link-hover-color;
+      }
     }
   }
 }

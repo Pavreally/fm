@@ -1,33 +1,39 @@
-// 1. Connected Fonts:
+// 1. CONNECTED FONTS:
 $default-fonts-path: '../your_path/fonts';
-$fonts-format: eot, woff2, woff, ttf, otf, svg;
+// Support: eot, woff2, woff, ttf, otf, svg
+$fonts-format: woff2, woff, ttf;
 
 $fonts:
-// * ('font_name', 'file_name', '/catalog', style, weight, stretch, unicode_range),
-// * ('font_name', remote, 'link_http'),
-// (Arial, '', '/Arial', normal),
+// (Font_Name_Regular, '', '', normal),
+
+// ! ('font_name', 'file_name', '/catalog', style, weight, stretch, unicode_range),
+// ! ('font_name', remote, 'link_http'),
 ();
 
-// 2. Fast Links:
-$link-height-underline: 1px;
+// 2. FAST LINKS:
+$link-underline-height: 1px;
 $link-transition: .1s ease-in-out;
 $link-text-decoration: none;
 
-$links-for-div:
-// * (class_name, color, hover_color, UDH, margin, name_template_class),
-// * (UDH) Underline-Direction-Hover: left, right, center, none.
-// (example-class, #000, #000fff, center, 0),
+$links-wrap:
+// (n, class, #000, #ccc, left),
+
+// ! (z_index, class_name, color, hover_color, *UD, name_template_class),
+// ! *UD (Underline-Direction): left, right, center, none.
 ();
 
-$links-for-a:
-// (example-class, #000, #000fff, center, 0),
+$links:
+// (n, class, #000, #ccc, left),
 ();
 
-// 3. Div Blocks:
-$div-blocks:
-// * (class_name, z_index, width, height, position, margin, padding, name_template_class)
-// (example-class, n, 100px, 40px, relative, 0, 5px),
+// 3. BLOCKS:
+$blocks:
+// (n, class, 10px, 10px, r),
+
+// ! (n, example-class, 100px, 40px, relative, 0, 0, name_template_class) or
+// ! (n, example-class, 100px, 40px, r, name_template_class)
+// ! (z_index, class_name, width, height, position, margin, padding, name_template_class)
 ();
 
 // Connecting FM setting components
-@import './components/constructor';
+@import './app/constructor';

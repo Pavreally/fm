@@ -1,0 +1,39 @@
+// Blocks Constructor
+@each $block-z-index, $block-class-name, $block-width, $block-height, $block-position, $block-margin, $block-padding, $block-template in $blocks {
+
+  @if ($block-class-name != null) or ($block-z-index != null) {
+    .#{$block-class-name} {
+      @if ($block-template != null) {
+        @if ($block-template == t) or ($block-template == null) {
+          @extend %#{$block-class-name};
+        } @else {
+          @extend %#{$block-template};
+        }
+      } @else if ($block-margin == t) or ($block-margin == template) {
+        @extend %#{$block-class-name};
+      } @if ($block-height != none) and ($block-height != n) and ($block-height != '') {
+        height: $block-height;
+      } @if ($block-margin != none) and ($block-margin != n) and ($block-margin != '') and ($block-margin != t) {
+        margin: $block-margin;
+      } @if ($block-padding != none) and ($block-padding != n) and ($block-padding != '') {
+        padding: $block-padding;
+      } @if ($block-position != none) and ($block-position != n) and ($block-position != '') {
+        @if ($block-position == r) or ($block-position == relative) {
+          position: relative;
+        } @if ($block-position == a) or ($block-position == absolute) {
+          position: absolute;
+        } @if ($block-position == f) or ($block-position == fixed) {
+          position: fixed;
+        } @if ($block-position == sta) or ($block-position == static) or ($block-position == sc) {
+          position: static;
+        } @if ($block-position == sti) or ($block-position == sticky) or ($block-position == sy) {
+          position: sticky;
+        }
+      } @if ($block-width != none) and ($block-width != n) and ($block-width != '') {
+        width: $block-width;
+      } @if ($block-z-index != none) and ($block-z-index != n) and ($block-z-index != '') {
+        z-index: $block-z-index;
+      }
+    }
+  }
+}
