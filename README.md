@@ -190,7 +190,7 @@ CSS:
 
 <br>
 
-### 3. Div control
+### 3. Block control
 > `$blocks` ( *parameters:* );<p>
 **(z_index, class_name, width, height, position, margin, padding, name_template_class),**
 
