@@ -1,0 +1,10 @@
+$default-fonts-path: '../your_path/fonts';
+$fonts-format: woff2, woff, ttf;
+// Formats (support): eot, woff2, woff, ttf, otf, svg
+
+$fonts:
+// (Font_Name_Regular, '', '', normal),
+
+// ! ('font_name', 'file_name', '/catalog', style, weight, stretch, unicode_range),
+// ! ('font_name', remote, 'link_http'),
+();

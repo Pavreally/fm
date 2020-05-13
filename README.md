@@ -5,7 +5,7 @@
 # Fast Mixin 
 `BETA`
 
-#### This solution should improve the scss code development experience. This package is a collection of commonly used components whose task is to improve the perception of the source code. The main goal of this solution is to enter parameters quickly and easily.
+#### This solution should improve the scss code development experience. This package is a collection of commonly used components whose task is to improve the perception of the source code. The main goal of this solution is to support large code and quickly change class properties.
 
 </center>
 
@@ -17,27 +17,29 @@
 - compatibility with most css-frameworks;
 - compatibility taking into account the order of the arrangement of code with gulp-lint.
 
-# Update 1.0.1 [08.05.2020]:
-<p>- Empty brackets fixed when compiling in font.scss
-<br>- Fixed many conditions in links.scss
-<br>- Many minor minor bugs fixed
-<br>- Changing and improving the convenience of controlling the order of parameters
+# Update 1.0.2 [13.05.2020]:
+<p>- File _fm.scss is divided into corresponding sections: _fm-fonts.scss, _fm-links.scss, _fm-blocks.scss. This will increase the convenience of controlling a lot of code.
+<br>- In order to simplify, the main plug-in file for the project was changed and renamed.
 
 -------
 ## How to use it?
-Сonnect file `_fm.scss` to your project by adding it to the end of the code scss.
-```
-@import './fm/fm';
-```
-`_fm.scss` - is the main file for settings control.
+Сonnect file `_import.scss` to your project by adding it to the end of the code scss.
 
-`_constructor.scss` - includes all connections that work in FM.
+> `_import.scss` - includes all connections that work in FM.
+
+```
+@import './fm/app/import';
+```
+
+`_fm-fonts.scss` - is a fonts control file.<br>
+`_fm-links.scss` - is a links control file.<br>
+`_fm-blocks.scss` - is a blocks control file.
 
 > All FM functions are commented out by default. They leave their mark only after removing comments in the main file.
 
 <br>
 
-### 1. Font control
+### Fonts control (_fm-fonts.scss)
 `$default-fonts-path` - is a variable where the path to fonts is indicated (without a closing slash)
 `$fonts-format` - is a variable that indicates the format of the fonts to be used. <br>
 Сurrently supported: **`eot woff2 woff ttf otf svg`**
@@ -110,7 +112,7 @@ CSS:
 
 <br>
 
-### 2. Link control
+### Links control (_fm-links.scss)
 Links can be for a wrapper class (for example `div` and `section`), or single.
 
 > `$links (-wrap):` ( *parameters:* );<p>
@@ -190,7 +192,7 @@ CSS:
 
 <br>
 
-### 3. Block control
+### Blocks control (_fm-blocks.scss)
 > `$blocks` ( *parameters:* );<p>
 **(z_index, class_name, width, height, position, margin, padding, name_template_class),**
 

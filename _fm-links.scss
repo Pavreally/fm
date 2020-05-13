@@ -1,0 +1,17 @@
+$link-underline-height: 1px;
+$link-transition: .1s ease-in-out;
+$link-text-decoration: none;
+
+$links-wrap:
+// (n, class, #000, #ccc, left),
+
+// ! (z_index, class_name, color, hover_color, *UD, name_template_class),
+// ! *UD (Underline-Direction): left, right, center, none.
+();
+
+$links:
+// (n, class, #000, #ccc, left),
+
+// ! (z_index, class_name, color, hover_color, *UD, name_template_class),
+// ! *UD (Underline-Direction): left, right, center, none.
+();
